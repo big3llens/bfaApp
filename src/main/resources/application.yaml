@@ -1,0 +1,45 @@
+server:
+  port: 7980
+  servlet:
+    context-path: /bfa-App
+  tomcat:
+    accesslog:
+      request-attributes-enabled: true
+  address: 10.160.3.232
+#  ssl:
+#    key-alias: selfsigned_localhost_sslserver
+#    key-password: changeit
+#    key-store: C:\Data\Java\jdk16\bin\ssl-server.jks
+#    key-store-provider: SUN
+#    key-store-type: JKS
+
+spring:
+  #  thymeleaf:
+  #    prefix: /templates/
+  servlet:
+    multipart:
+      max-file-size: 50MB
+  datasource:
+    url: jdbc:postgresql://10.160.1.106:5432/handbook
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: CA0435942
+  jpa:
+    #    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  #  datasource:
+  #    url: jdbc:postgresql://localhost:5432/bfa_development_base
+  #    driver-class-name: org.postgresql.Driver
+  #    username: postgres
+  #    password: 5432
+
+  mvc:
+    dispatch-trace-request: true
+
+  ldap:
+    urls: ldap://dc1:389
+    #    base: dc=bfad,dc=ru
+    username: bfad\markelovss
+    password: Zxcvbn123

@@ -1,0 +1,78 @@
+<div id="navBackgraund" th:fragment="mainNav">
+    <h3>Веб-сервис компании БФА-Девелопмент</h3>
+    <ul id="topList">
+        <li name="line">
+            <a th:href="@{/support/index}">
+            <button class="navButton">Тех. помощь</button></a>
+        </li>
+        <li name="line">
+            <a th:href="@{/handbook/index}">
+            <button class="navButton">Тел. справочник</button></a>
+        </li>
+        <li name="line">
+            <a th:href="@{/main/mailingService}">
+            <button class="navButton" sec:authorize="isAuthenticated()">Сервис рассылок</button></a>
+        </li>
+        <li name="line" style="float: right;" sec:authorize="!isAuthenticated()">
+            <a th:href="@{/main/login}"><button class="navButton">Войти</button></a>
+        </li>
+        <li name="line" style="float: right;" sec:authorize="isAuthenticated()">
+            <a th:href="@{/main/logout}"><button class="navButton">Выйти</button></a>
+        </li>
+    </ul>
+</div>
+<div id="leftNavBar" th:fragment="mailsLeftNav">
+    <ul id="leftList">
+        <li>
+            <a th:href="@{/main/mailsLists}" class="listHref">Просмотр листов рассылки</a>
+        </li>
+        <li>
+            <a th:href="@{/main/addPersonToMailListUtil}" class="listHref">Редактирование листов рассылки</a>
+        </li>
+        <li>
+            <a th:href="@{/main/sendMessage}" class="listHref">Отправка рассылок</a>
+        </li>
+
+    </ul>
+</div>
+<div id="leftNavBar" th:fragment="handbookLeftNavBar">
+    <ul id="leftList">
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=bfa development,ou=bfa users,dc=bfad,dc=ru}" class="listHref">БФА-Девелопмент</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=БФА-Инвестиции,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">БФА-Инвестиции</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=Дудергофский проект,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">Дудергофский проект</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=БФА Сервис,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">БФА-Сервис</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=Центр-Инвест-Строй,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">Центр-инвест-Строй</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=Пламя,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">Пламя</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=МК БФА,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">МК-БФА</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=БФА-Монолит,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">БФА-Монолит</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=Невское наследие,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">Невское наследие</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=ПСБ Жилстрой,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">ПСБ Жилстрой</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=Северо-Западная индустриальная компания,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">Северо-Западная индустриальная компания</a>
+        </li>
+        <li>
+            <a th:href="@{/handbook/persons?company=ou=Зенит-Строй-Инвест,ou=externalcompanies,dc=bfad,dc=ru}" class="listHref">Зенит-инвест-строй</a>
+        </li>
+
+    </ul>
+</div>

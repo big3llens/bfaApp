@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+</head>
+<body>
+<div id="mainBlock">
+    <div th:replace="fragments/mainNavBar :: mainNav">
+    </div>
+    <div id="bottomBlock">
+        <h2 style="margin: 0; padding-bottom: 20px; padding-top: 20px;">Сервис отправки сообщений в тех. поддержку</h2>
+        <form th:action="@{/support/message}" th:object="${supportMessage}" method="post" enctype="multipart/form-data">
+            <div style="width: 800px; padding-bottom: 20px; padding-top: 20px;">
+                <label for="theme" style="display: block;">№ Кабинета</label>
+                <input id="theme" type="text" name=""
+                       style="margin: 0; width: 798px;"  th:field="*{roomNumber}" placeholder="Введите номер кабинета или краткое название локации где произошла проблема">
+            </div>
+            <div style="width: 100%; padding-bottom: 20px;">
+                <label for="body" style="display: block;">Текст сообщения</label>
+                <textarea id="body" placeholder="Опишите Вашу проблему" th:field="*{text}"></textarea>
+            </div>
+
+            <div th:if="${messageContentError} != null" style="margin-bottom: 0.95rem; color: crimson">
+                <h6 th:text="${messageContentError}"></h6>
+            </div>
+            <div th:if="${messageContentError} != null" style="margin-bottom: 0.95rem; color: crimson">
+                <h6 th:text="${messageContentError}"></h6>
+            </div>
+            <div style="padding-top:20px">
+                <button class="tableButton">Отправить</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

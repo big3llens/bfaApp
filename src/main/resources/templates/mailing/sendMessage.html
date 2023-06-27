@@ -1,0 +1,210 @@
+<!--<!doctype html>-->
+
+<!--<html xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<!--</head>-->
+
+<!--<script type="text/javascript">-->
+<!--    document.getElementById("inlineRadio1").setAttribute("checked","checked")-->
+<!--</script>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--    <div class="container">-->
+
+<!--        <div th:replace="fragments/mainNavBar :: mainNav"></div>-->
+<!--        <h1>РАССЫЛКА</h1>-->
+
+<!--        <form th:action="@{/main/message}" th:object="${messageFrom}" method="post" enctype="multipart/form-data">-->
+<!--            <div class="form-row">-->
+<!--                <div class="form-group col-md-6" >-->
+<!--                    <label for="from">Отправитель</label>-->
+<!--                    <select class="custom-select" id="from" th:field="*{from}">-->
+<!--                        <option th:each="fromItem : ${fromList}" th:value="${fromItem.email}" th:text="${fromItem.email}"></option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="form-row">-->
+<!--                <div class="form-group col-md-6">-->
+<!--                    <label for="subject">Тема</label>-->
+<!--                    <input type="text" class="form-control" id="subject" placeholder="Введите тему рассылки" th:field="*{subject}">-->
+<!--                </div>-->
+<!--                <div class="form-group col-md-6" >-->
+<!--                    <label for="to">Лист получателей</label>-->
+<!--                    <select class="custom-select" id="to" th:field="*{mailslistId}">-->
+<!--                        <option th:each="sender : ${mailsList}" th:value="${sender.id}" th:text="${sender.name}"></option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="form-group">-->
+<!--                <label for="exampleFormControlTextarea1">Текст</label>-->
+<!--                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Введите текс рассылки" th:field="*{text}"></textarea>-->
+<!--            </div>-->
+
+<!--            <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="deliveryMethod" id="inlineRadio1" value="0" checked>-->
+<!--                <label class="form-check-label" for="inlineRadio1">Общая отправка</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--                <input class="form-check-input" type="radio" name="deliveryMethod" id="inlineRadio2" value="1">-->
+<!--                <label class="form-check-label" for="inlineRadio2">Поименная отправка</label>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div class="form-check form-check-inline" style="margin-bottom: 0.95rem">-->
+<!--                <input class="form-check-input" type="radio" name="sendBodyMethod" id="inlineRadio3" value="0" checked>-->
+<!--                <label class="form-check-label" for="inlineRadio3">Отправить содержимое текстом</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline" style="margin-bottom: 0.95rem">-->
+<!--                <input class="form-check-input" type="radio" name="sendBodyMethod" id="inlineRadio4" value="1">-->
+<!--                <label class="form-check-label" for="inlineRadio4">Отправить содержимое файлом</label>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div class="form-group">-->
+<!--                <label for="inputGroupFile01">Вложите файл .mht вместо текстового сообщения</label>-->
+<!--                <input type="file" class="form-control-file" id="inputGroupFile01" th:field="*{file}" style="width: 30%">-->
+<!--            </div>-->
+<!--            &lt;!&ndash;            <div class="custom-file">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <input multiple type="file" class="custom-file-input" id="inputGroupFile03" th:field="*{attachment}" >&ndash;&gt;-->
+<!--            &lt;!&ndash;                <label class="custom-file-label" for="inputGroupFile03">Выберите вложения</label>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <div th:if="${messageContentError} != null" style="margin-bottom: 0.95rem; color: crimson">-->
+<!--                <h6 th:text="${messageContentError}"></h6>-->
+<!--            </div>-->
+<!--            <div class="sendButton">-->
+<!--                <button type="submit" class="btn btn-primary mb-2">Разослать</button>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+
+</head>
+<body>
+<div id="mainBlock">
+    <div th:replace="fragments/mainNavBar :: mainNav"></div>
+    <div id="bottomBlock">
+        <div th:replace="fragments/mainNavBar :: mailsLeftNav"></div>
+        <div id="content">
+            <h2 style="margin: 0; padding-left: 2px; padding-bottom: 23px;">Отправка рассылок</h2>
+
+            <form th:action="@{/main/message}" th:object="${messageFrom}" method="post" enctype="multipart/form-data">
+<!--                <div >-->
+<!--                    <div style="display: inline-block; ">-->
+<!--                        <span style="display: block;">Выбран отправитель:</span>-->
+<!--                        <div class="dropdown">-->
+<!--                            <button class="dropbtn" th:text="${fromList.email}"></button>-->
+<!--                            <div class="dropdown-content">-->
+<!--                                <a th:field="*{from}" th:each="fromItem : ${fromList}" th:value="${fromItem.email}" th:text="${fromItem.email}"></a>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div style=" display: inline-block">-->
+<!--                        <span style="display: block;">Выбран лист получателей:</span>-->
+<!--                        <div class="dropdown">-->
+<!--                            <button class="dropbtn" th:text="${sender.name}"></button>-->
+<!--                            <div class="dropdown-content">-->
+<!--                                <a th:field="*{mailslistId}" th:each="sender : ${mailsList}" th:value="${sender.id}" th:text="${sender.name}">Link 1</a>-->
+<!--                                <a href="#">Link 2</a>-->
+<!--                                <a href="#">Link 3</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div style="display: inline-block; padding-bottom: 20px;">
+                    <label style="display: block;">Отправитель</label>
+                    <select id="from" th:field="*{from}" style="height: 26px;">
+                        <option th:each="fromItem : ${fromList}" th:value="${fromItem.email}" th:text="${fromItem.email}"></option>
+                    </select>
+                </div>
+                <div style="display: inline-block;">
+                    <label for="for" style="display: block;">Лист получателей</label>
+                    <select id="for" th:field="*{mailslistId}" style="height: 26px;">
+                        <option th:value="${null}">Список рассылки не выбран</option>
+                        <option th:each="sender : ${mailsList}" th:value="${sender.id}" th:text="${sender.name}"></option>
+                    </select>
+                </div>
+
+<!--                <div style="display: inline-block;">-->
+<!--                    <label for="for" style="display: block;">Лист получателей</label>-->
+<!--&lt;!&ndash;                    <select id="for" th:field="*{mailslistId}" style="height: 26px;">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option th:each="sender : ${mailsList}" th:value="${sender.id}" th:text="${sender.name}"></option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </select>&ndash;&gt;-->
+<!--                    <div class="dropdown" id="for">-->
+<!--                        <button class="dropbtn" th:text="${sender.name} == null ? 'Выберете список рассылки' : ${sender.name}" th:field="*{mailslistId}"></button>-->
+<!--                        <div class="dropdown-content">-->
+<!--                            <a th:each="sender : ${mailsList}" th:value="${sender.id}" th:text="${sender.name}"></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div style="width: 800px; padding-bottom: 20px;">
+                    <label for="theme" style="display: block;">Тема</label>
+                    <input id="theme" type="text" name=""
+                           style="margin: 0; width: 798px; height: 22px"  th:field="*{subject}">
+                </div>
+                <div style="width: 100%; padding-bottom: 20px;">
+                    <label for="body" style="display: block;">Текст</label>
+                    <textarea id="body" placeholder="Введите текст рассылки" th:field="*{text}"></textarea>
+                </div>
+                <div>
+                    <input type="radio" id="radio1" class="radio" value="0" name="deliveryMethod">
+                    <label for="radio1" style="margin-right: 20px;">Общая отправка</label>
+                    <input type="radio" id="radio2" class="radio" value="1" name="deliveryMethod">
+                    <label for="radio2">Поименная отправка</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio3" class="radio" value="0" name="sendBodyMethod">
+                    <label for="radio3" style="margin-right: 20px;">Отправить содержимое текстом</label>
+                    <input type="radio" id="radio4" class="radio" value="1" name="sendBodyMethod">
+                    <label for="radio4">Отправить содержимое файлом</label>
+                </div>
+                <label class="input-file" style="padding-top: 20px">
+                    <input type="file" name="file" th:field="*{file}">
+                    <span class="input-file-btn">Выберите файл</span>
+                    <span class="input-file-text">Максимум 50Мб</span>
+                </label>
+                <div th:if="${messageError} != null" style="margin-bottom: 0.95rem; color: crimson">
+                    <h6 th:text="${messageError}"></h6>
+                </div>
+                <div style="padding-top:20px">
+                    <button class="tableButton">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $('.input-file input[type=file]').on('change', function(){
+        let file = this.files[0];
+        $(this).closest('.input-file').find('.input-file-text').html(file.name);
+    });
+    document.getElementById("radio1").setAttribute("checked","checked")
+    document.getElementById("radio3").setAttribute("checked","checked")
+</script>
+</body>
+</html>

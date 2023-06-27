@@ -1,0 +1,243 @@
+body{
+  margin: 8px 0;
+  font-family: 'Merriweather', serif;
+  background-color: White;
+  /*  background-color: LightCyan;*/
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+h3{
+  color: white;
+}
+
+/*Главный блок/////////////////////////////////////////////////////////////////////////////////////!*/
+#mainBlock{
+  max-width:85%;
+  height: 1000px;
+  padding: 0px 150px;
+}
+
+/*Навигационная панель: сборник подстилей/////////////////////////////////////////////////////////!*/
+/*Стиль верхнего анордер листа:*/
+#topList{
+  margin: 0px;
+  height: 38px;
+  padding: 0px;
+}
+
+/*Стиль лист айтемов: главной навигационной панели*/
+li[name="line"]{
+  float: left;
+  display: inline;
+  /*align-items: center;*/
+}
+
+/*Стиль навигационного фона*/
+#navBackgraund{
+  border: 2px solid maroon;
+  /*  background: DarkRed;*/
+  background: Maroon;
+  /*border-radius: 12px;*/
+}
+
+/*Стиль кнопочек и кнопки выйти/войти:*/
+button[name="navButton"]{
+  font-family: inherit;
+  height: 38px;
+  width: 125px;
+  align-content: center;
+  margin-right: 1px;
+  background: inherit;
+  color: white;
+  border: 1px solid white;
+  border-radius: 12px;
+}
+#out{
+  float: right;
+}
+
+/*Стиль контента и бокой навигации/////////////////////////////////////////////////////////////////!*/
+/*Левый нижний div*/
+#leftNavBar{
+  position: absolute;
+  left: 150px;
+  top: 110px;
+  width: 150px;
+  height: 900px;
+}
+/*Левая навигационная панель нижнего div'а*/
+#leftList{
+  margin-top: 25px;
+  padding-left: 0;
+  list-style: none;
+}
+/*Листы левой навигационной панели*/
+.listHref{
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/*Нижний div*/
+#bottomBlock{
+  padding: 0;
+  color: Maroon;
+  height: 900px;
+}
+/*Правый нижний div*/
+#content{
+  height: 875px;
+  margin-left: 150px;
+  padding-top: 25px;
+  padding-left: 40px;
+}
+
+/*Стиль таблиц//////////////////////////////////////////////////////////////////////////////////////////////!*/
+table{
+  border: 1px solid maroon;
+  border-spacing: 0;
+  min-width: 100%;
+}
+td{
+  border: 1px solid maroon;
+}
+
+.tableButton{
+  font-family: inherit;
+  height: 38px;
+  width: 125px;
+  /*  align-content: center;*/
+  margin-right: 1px;
+  background: inherit;
+  color: maroon;
+  border: 1px solid maroon;
+  border-radius: 12px;
+}
+.tableHead{
+  background: maroon;
+  color: white;
+  height: 35px;
+  border: 2px solid maroon;
+  text-align: left;
+}
+
+/*Стиль формы*/
+.form{
+
+}
+input{
+  height: 34px;
+  width: 394px;
+  margin-bottom: 20px;
+  border: 1px solid maroon;
+  color: maroon;
+  font-family: 'Merriweather', serif;
+}
+input::placeholder{
+  color: maroon;
+  font-family: 'Merriweather', serif;
+}
+
+/*Стиль для addPersonToMailsList///////////!*/
+#addPersonToMailsListHead{
+  padding-bottom: 25px;
+
+}
+select{
+  font-family: 'Merriweather', serif;
+  color: maroon;
+  border: 1px solid maroon;
+  width: 400px;
+  height: 38px;
+}
+option{
+  font-family: 'Merriweather', serif;
+}
+textarea{
+  font-family: 'Merriweather', serif;
+  color: maroon;
+  border: 1px solid maroon;
+  width: 800px;
+  height: 350px;
+}
+textarea::placeholder{
+  color: inherit;
+}
+.radio{
+  width: 12px;
+  height: 15px;
+  padding-top: 5px;
+  margin: 0;
+}
+/*Стилизация кнопки "приложить файл"*/
+.input-file {
+  position: relative;
+  display: inline-block;
+}
+.input-file-btn {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 14px;
+  vertical-align: middle;
+  color: rgb(255 255 255);
+  text-align: center;
+  border-radius: 4px;
+  background-color: maroon;
+  line-height: 22px;
+  height: 40px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid maroon;
+  /*  border: none;*/
+  margin: 0;
+  transition: background-color 0.2s;
+}
+.input-file-text {
+  padding: 0 10px;
+  line-height: 38px;
+  display: inline-block;
+}
+.input-file input[type=file] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+/* Focus */
+/*.input-file input[type=file]:focus + .input-file-btn {
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}*/
+
+/* Hover/active */
+.input-file:hover .input-file-btn {
+  /*  background-color: #59be6e;*/
+  background-color: white;
+  color: maroon;
+  /*border: 1px solid maroon;
+  height: 38px;
+  padding: 1px;*/
+}
+.input-file:active .input-file-btn {
+  /*  background-color: #2E703A;*/
+  background-color: black;
+}
+
+/* Disabled */
+.input-file input[type=file]:disabled + .input-file-btn {
+  background-color: #eee;
+}
+.tableButton:hover{
+  background-color: maroon;
+  color: white;
+}

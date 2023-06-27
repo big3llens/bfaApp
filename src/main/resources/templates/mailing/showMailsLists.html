@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+</head>
+<body>
+<div id="mainBlock">
+    <div th:replace="fragments/mainNavBar :: mainNav"></div>
+    <div id="bottomBlock">
+        <div th:replace="fragments/mainNavBar :: mailsLeftNav"></div>
+        <div id="content">
+            <h2 style="margin: 0; padding-left: 2px; padding-bottom: 23px;">Просмотр листов рассылки</h2>
+            <form th:action="@{/main/saveMailsList}" method="get">
+                <div class="form">
+                    <input type="text" placeholder="Введите название листа, который хотите создать" name="nameMailslist" style="height: 24px">
+                    <button class="tableButton" >Создать лист</button>
+                </div>
+            </form>
+            <table style="border-color: maroon; border-width: 1px 1px 0px 1px">
+                <thead>
+                <tr class="tableHead">
+                    <th>Название листа рассылки</th>
+                    <th style="width: 110px;padding-left: 18px;">Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="m : ${mailsList}" style="height: 20px">
+                    <td th:value="${m.name}" th:text="${m.name}" style="border: solid maroon; border-width: 0px 0px 0.5px 0px">Тестовый</td>
+                    <td style="border: solid maroon; border-width: 0px 0px 0.5px 0px">
+                        <a th:href="@{/main/mailsList/{id}(id=${m.id})}" ><button class="tableButton">Просмотреть</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

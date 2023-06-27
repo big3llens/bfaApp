@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+
+</head>
+<body>
+<div id="mainBlock">
+    <div th:replace="fragments/mainNavBar :: mainNav"></div>
+    <div id="bottomBlock">
+        <div th:replace="fragments/mainNavBar :: mailsLeftNav"></div>
+        <div id="content">
+            <h2 style="margin: 0; padding-left: 2px; padding-bottom: 23px;">Сервис рассылок</h2>
+            <span>Данный сервис позволяет создавать листы рассылок (ЛР)- список почтовых адресов, которым будет осуществляться рассылка.</span>
+            <p> 1) На странице "Просмотр листов рассылки" мы увидим имеющие у нас листы, так же там можно создавать новые и просматривать уже существующие</p>
+            <p> 2) На странице "Редактирование листов рассылки" можно выбрать ЛР из списка существующих и добавить в него новые почтовые адреса</p>
+            <p> 3) На странице "Отправка рассылки" формируется письмо для рассылки. Нужно выбрать: 1) отправителя (почтовый адрес с которого будет осуществляться рассылка), 2) ЛР (сообщение будет доставлено всем почтовым адресам входящим в лист), 3) написать тему, 4) если вы хотите отправить только текстовое сообщение, то достаточно написать его в текстовом поле, если же вы сделали красивое письмо, которое стилизовали в MS Word, то сохраните его с расширением .mht и вложите как файл, при этом выбрав "Отправить содержимое файлом".<br>
+                P.S. Если вы хотите отправить поименную отправку (чтобы получатель рассылки не видел кому еще доставлено это письмо), то выберите пункт "Поименная отправка"</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

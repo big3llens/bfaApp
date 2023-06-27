@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+</head>
+<body>
+<div id="mainBlock">
+    <div th:replace="fragments/mainNavBar :: mainNav"></div>
+    <div id="bottomBlock">
+        <div th:replace="fragments/mainNavBar :: handbookLeftNavBar"></div>
+        <div id="content">
+            <h2 style="margin: 0; padding-left: 2px; padding-bottom: 23px;">Телефонный справочник</h2>
+            <table>
+                <thead>
+                <tr class="tableHead" style="font-size: 14px;">
+                    <th class="rightWhiteBorder">ФИО</th>
+                    <th class="rightWhiteBorder">Отдел</th>
+                    <th class="rightWhiteBorder">Должность</th>
+                    <th class="rightWhiteBorder">Местный телефон</th>
+                    <th class="rightWhiteBorder">Городской телефон</th>
+                    <th class="rightWhiteBorder">Мобильный телефон</th>
+                    <th>Почтовый адрес</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Руководство</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${managment}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Протольный сектор</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${protocolSector}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Управление по кадрам и защите информации</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${personnelManagement}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Бухгалтерия</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${accounting}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Инженерно-строительное управление</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${isu}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${isuDepartments}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Управление строительного контроля и качества</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${CCAndQD}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${CCAndQDDepartment}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Управление маркетинга и продаж</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${marketingAndSales}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${marketingAndSalesDepartment}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Юридическое управление</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${legalManagement}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Финансовое управление</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${financialManagement}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${financialDepartment}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Техническая служба</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${technicalService}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Отдел эксплуатации</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${operationsDepartment}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="7" style="border: solid maroon; border-width: 1px 0;">Автотранспортный отдел</th>
+                </tr>
+                <tr style="font-size: 12px;" th:each="m : ${motorTransportDepartment}" class="redRow">
+                    <td class="rightMaroonBorder" th:text="${m.fullName}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.department}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.title}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.innerNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.cityNumber}"></td>
+                    <td class="rightMaroonBorder" th:text="${m.mobileNumber}"></td>
+                    <td th:text="${m.email}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

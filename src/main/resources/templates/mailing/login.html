@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+    <style type="text/css">
+        body {
+            margin: 8px 0;
+            font-family: 'Merriweather', serif;
+            background-color: White;
+            color: maroon;
+        }
+        form {
+            text-align: center;
+        }
+        h2 {
+            padding-top: 150px;
+            text-align: center;
+        }
+        button {
+            margin-top: 22px;
+            font-family: inherit;
+            height: 38px;
+            width: 125px;
+            align-content: center;
+            margin-right: 1px;
+            background: maroon;
+            color: white;
+            border: 1px solid white;
+            border-radius: 12px;
+        }
+        input {
+            height: 25px;
+            width: 260px;
+            border: 1px solid maroon;
+            color: maroon;
+            font-family: 'Merriweather', serif;
+        }
+        .navButton:hover {
+            background-color: white;
+            color: maroon;
+            border-color: maroon;
+        }
+    </style>
+</head>
+<body>
+<h2 style="padding-bottom: 20px; margin: 0;">Введите ваши данные</h2>
+<form th:action="@{/main/login}" method="post">
+    <div th:if="${param.error}" style="padding-bottom: 25px; color: crimson">
+        <div>Неверный логин или пароль</div>
+    </div>
+    <div th:if="${param.logout}">
+        <div>Вы успешно вышли</div>
+    </div>
+    <div style="padding-bottom: 20px;">
+        <label style="display: block" for="username">Логин: </label>
+        <input type="text" id ="username" name = "username">
+    </div>
+    <div>
+        <label style="display: block" for="password">Пароль: </label>
+        <input type="password" id="password" name="password">
+    </div>
+    <button class="navButton">Войти</button>
+</form>
+</body>
+</html>

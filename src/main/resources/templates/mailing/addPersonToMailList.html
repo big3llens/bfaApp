@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+<!--            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-route.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="shortcut icon" th:href="@{/images/icon.ico}">
+    <title>bfa-App</title>
+</head>
+<body>
+<script th:inline="javascript">
+    var baseUrl= 'http://10.160.3.232:7980/bfa-App/main/addPersonToMailListUtil?nameCompany=';
+    var defaultCompany = 'ou=bfa development,ou=bfa users,dc=bfad,dc=ru';
+    var indexSort = 1;
+    // let count = 1;
+
+    if(localStorage.getItem("company") == null) {
+        localStorage.setItem("count", '1');
+        localStorage.setItem('company', defaultCompany);
+        // indexSort = 0;
+    }
+    function sendCompany(company) {
+        localStorage.setItem('company', company);
+        var url = baseUrl + company;
+        if (localStorage.getItem("mailslistId") == null) {
+            url = baseUrl + company;
+            console.log(1);
+        }
+        if (localStorage.getItem("mailslistId") != null) {
+            url = baseUrl + company + '&listId=' + localStorage.getItem("mailslistId");
+            console.log(localStorage.getItem("mailslistId"));
+            console.log(2);
+        }
+        window.location.replace(url);
+    }
+    function sendMailsList(id) {
+        localStorage.setItem("mailslistId", id);
+        var company = localStorage.getItem('company')
+        var url = baseUrl + company + '&listId=' + id;
+        window.location.replace(url);
+    }
+    function addPersonToMailsList(name, email) {
+        var company = localStorage.getItem("company");
+        var id = localStorage.getItem("mailslistId");
+        // if (window.performance.getEntriesByType("navigation")){
+        //     p=window.performance.getEntriesByType("navigation")[0].type;
+        //     if (p=='reload'){sendMailsList(id)}
+        // }
+        var url = baseUrl + company + '&listId=' + id +'&fullName=' + name + '&email=' + email;
+        window.location.replace(url);
+        // console.log(email);
+        // console.log(name);
+        // console.log(sessionStorage.getItem("indexReload"));
+    }
+
+    function sort() {
+
+        var count = Number(localStorage.getItem("count"));
+        // if(count % 2 === 0) indexSort = 1;
+        // if(count % 2 !== 0) indexSort = 0;
+        if(count % 2 === 0) indexSort = 0;
+        if(count % 2 !== 0) indexSort = 1;
+        count += 1;
+        console.log(count, localStorage.getItem("count"), indexSort)
+
+        localStorage.setItem("count", String(count));
+        url = 'http://10.160.3.232:7980/bfa-App/main/addPersonToMailListUtil?nameCompany=' + localStorage.getItem('company') + '&indexSort=' + indexSort + '&listId=' + localStorage.getItem("mailslistId");
+        window.location.replace(url);
+        console.log('после конкатенации')
+        console.log(count, localStorage.getItem("count"), indexSort)
+    }
+</script>
+<div id="mainBlock">
+    <div th:replace="fragments/mainNavBar :: mainNav"></div>
+    <div id="bottomBlock">
+        <div th:replace="fragments/mainNavBar :: mailsLeftNav"></div>
+        <div id="content">
+            <h2 style="margin: 0; padding-left: 2px; padding-bottom: 23px;">Добавить пользователя в лист рассылки</h2>
+
+            <div id="addPersonToMailsListHead">
+                <div style="display: inline-block; padding-right: 50px;">
+<!--                    <span>Выбрана компания:</span>-->
+                    <label for="company">Выбрана компания:</label>
+                    <div class="dropdown" id="company">
+                        <button class="dropbtn" th:text="${nameCompanyForUser} == null ? 'БФА-Девелопмент' : ${nameCompanyForUser}"></button>
+                        <div class="dropdown-content">
+                            <a onclick="sendCompany('ou=bfa development,ou=bfa users,dc=bfad,dc=ru')">БФА-Девелопмент</a>
+                            <a onclick="sendCompany('ou=БФА-Инвестиции,ou=externalcompanies,dc=bfad,dc=ru')">БФА-Инвестиции</a>
+                            <a onclick="sendCompany('ou=Дудергофский проект,ou=externalcompanies,dc=bfad,dc=ru')">Дудергофский проект</a>
+                            <a onclick="sendCompany('ou=БФА Сервис,ou=externalcompanies,dc=bfad,dc=ru')">БФА-Сервис</a>
+                            <a onclick="sendCompany('ou=Центр-Инвест-Строй,ou=externalcompanies,dc=bfad,dc=ru')">Центр-инвест-Строй</a>
+                            <a onclick="sendCompany('ou=Пламя,ou=externalcompanies,dc=bfad,dc=ru')">Пламя</a>
+                            <a onclick="sendCompany('ou=МК БФА,ou=externalcompanies,dc=bfad,dc=ru')">МК-БФА</a>
+                            <a onclick="sendCompany('ou=БФА-Монолит,ou=externalcompanies,dc=bfad,dc=ru')">БФА-Монолит</a>
+                            <a onclick="sendCompany('ou=Невское наследие,ou=externalcompanies,dc=bfad,dc=ru')">Невское наследие</a>
+                            <a onclick="sendCompany('ou=ПСБ Жилстрой,ou=externalcompanies,dc=bfad,dc=ru')">ПСБ Жилстрой</a>
+                            <a onclick="sendCompany('ou=Северо-Западная индустриальная компания,ou=externalcompanies,dc=bfad,dc=ru')">Северо-Западная индустриальная компания</a>
+                            <a onclick="sendCompany('ou=Зенит-Строй-Инвест,ou=externalcompanies,dc=bfad,dc=ru')">Зенит-инвест-строй</a>
+                        </div>
+                    </div>
+                </div>
+                <div style=" display: inline-block">
+                    <label for="mailsList">Выбран лист:</label>
+                    <div class="dropdown" id="mailsList">
+                        <button class="dropbtn" th:text="${mailsListName} == null ? 'ЛР не выбран' : ${mailsListName}"></button>
+                        <div class="dropdown-content">
+                            <a th:each="list : ${mailsList}" th:value="${list.id}" th:text="${list.name}" th:attr="onclick=|sendMailsList('${list.id}')|"></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <table style="border-color: maroon;">
+                <thead>
+                <tr class="tableHead">
+                    <th><a onclick="sort()">ФИО</a></th>
+                    <th>Почтовый адрес</th>
+                    <th style="width: 110px;padding-left: 18px;">Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pers : ${personsFromAD}">
+                    <td th:value="${pers.fullName}" th:utext="${pers.fullName}" style="border: solid maroon; border-width: 0px 0px 0.5px 0px"></td>
+                    <td th:text="${pers.email}" style="border: solid maroon; border-width: 0px 0px 0.5px 0px"></td>
+                    <td style="border: solid maroon; border-width: 0px 0px 0.5px 0px">
+                        <a >
+                            <button class="tableButton" th:if="${mailsListName} != null" th:attr="onclick=|addPersonToMailsList('${pers.fullName}','${pers.email}')|">Добавть в лист</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
